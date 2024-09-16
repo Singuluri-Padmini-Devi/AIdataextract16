@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Results</h1>
+    </header>
+    <main>
+        <h2>Text Extraction Results</h2>
+        <pre>{{ text }}</pre>
+        {% if csv %}
+            <h2>Download Tables CSV</h2>
+            <a href="{{ url_for('static', filename='uploads/' + csv) }}" download>Download CSV</a>
+        {% endif %}
+        {% if json %}
+            <h2>JSON Output</h2>
+            <pre>{{ json }}</pre>
+        {% endif %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Register</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username.label }}<br>
+                {{ form.username() }}<br>
+                {% for error in form.username.errors %}
+                    <span>{{ error }}</span><br>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.password.label }}<br>
+                {{ form.password() }}<br>
+                {% for error in form.password.errors %}
+                    <span>{{ error }}</span><br>
+                {% endfor %}
+            </div>
+            <div>
+                {{ form.submit() }}
+            </div>
+            {% if error %}
+                <div>{{ error }}</div>
+            {% endif %}
+        </form>
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    </main>
+</body>
+</html>
